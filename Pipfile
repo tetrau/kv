@@ -7,6 +7,8 @@ name = "pypi"
 
 [dev-packages]
 "psycopg2" = "*"
+setuptools = "*"
+wheel = "*"
 
 [requires]
 python_version = "3"
