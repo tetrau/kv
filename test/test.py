@@ -30,3 +30,7 @@ class TestKV(unittest.TestCase):
         self.assertEqual(self.database.get("test"), "value 1")
         self.database.put("test", "value 2")
         self.assertEqual(self.database.get("test"), "value 2")
+
+    def test_type_mismatch(self):
+        with self.assertRaises(TypeError):
+            self.database.put("test", 1)

@@ -20,7 +20,8 @@ class KVStorage:
         self._compress_value = compress_value
         if self._compress_value:
             if self._value_type not in (str, bytes):
-                raise TypeError("only str and bytes values are supported for compress function")
+                raise TypeError("only str and bytes values are supported for "
+                                "compress function")
             value_type = bytes
         kwargs.update({"database": database,
                        "table": table,
@@ -30,11 +31,13 @@ class KVStorage:
 
     def _check_key_type(self, k):
         if not isinstance(k, self._key_type):
-            raise ValueError("mismatched key type: {}, excepted: {}".format(type(k), self._key_type))
+            raise TypeError("mismatched key type: {}, excepted: {}"
+                             .format(type(k), self._key_type))
 
     def _check_value_type(self, v):
         if not isinstance(v, self._value_type):
-            raise ValueError("mismatched value type: {}, excepted: {}".format(type(v), self._value_type))
+            raise TypeError("mismatched value type: {}, excepted: {}"
+                             .format(type(v), self._value_type))
 
     def put(self, k, v):
         self._check_key_type(k)
